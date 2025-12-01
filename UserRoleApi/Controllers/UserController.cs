@@ -17,12 +17,13 @@ namespace UserRoleApi.Controllers
         [HttpPost]
         public async Task<ActionResult> AddNewUser(AddUserDto addUserDto)
         {
-            if (addUserDto != null)
+            var newuser = await _user.AddNewUser(addUserDto);
+            if (newuser != null)
             {
-                return StatusCode(201, await _user.AddNewUser(addUserDto));
+                return StatusCode(201, newuser);
             }
 
-            return StatusCode(404, await _user.AddNewUser(addUserDto));
+            return StatusCode(404, null);
 
         }
 
@@ -34,7 +35,19 @@ namespace UserRoleApi.Controllers
             {
                 return Ok(user);
             }
-            return NotFound(user);
+            return NotFound(null);
+
+        }
+
+        [HttpGet("allUserWithRoles")]
+        public async Task<ActionResult> GetAllUserWithRole()
+        {
+            var user = await _user.GetAllUserWithRole();
+            if (user != null)
+            {
+                return Ok(user);
+            }
+            return NotFound(null);
 
         }
 

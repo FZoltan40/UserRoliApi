@@ -1,4 +1,5 @@
 
+using System.Text.Json.Serialization;
 using UserRoleApi.Models;
 using UserRoleApi.Services;
 using UserRoleApi.Services.IServices;
@@ -13,6 +14,11 @@ namespace UserRoleApi
 
             builder.Services.AddDbContext<UserDbContext>();
             builder.Services.AddScoped<IUser, UserService>();
+            builder.Services.AddScoped<IRole, RoleService>();
+            builder.Services.AddScoped<IUserRole, UserRoleService>();
+
+            builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
 
             // Add services to the container.
 

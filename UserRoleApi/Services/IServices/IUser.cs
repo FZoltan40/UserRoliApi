@@ -9,5 +9,6 @@ namespace UserRoleApi.Services.IServices
         Task<object> GetUserById(Guid id);
         Task<object> DeleteUser(Guid id);
         Task<object> UpdateUser(Guid id, UpdateUserDto updateUserDto);
+        Task<object> GetAllUserWithRole();
     }
 }

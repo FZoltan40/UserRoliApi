@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "UserRoleApi.Controllers.RoleController",
+    "Method": "AddNewRole",
+    "RelativePath": "api/Role",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addRoleDto",
+        "Type": "UserRoleApi.Models.Dtos.AddRoleDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "UserRoleApi.Controllers.UserController",
     "Method": "AddNewUser",
     "RelativePath": "api/User",
@@ -23,6 +39,32 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UserRoleApi.Controllers.UserController",
+    "Method": "GetAllUserWithRole",
+    "RelativePath": "api/User/allUserWithRoles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UserRoleApi.Controllers.UserRoleController",
+    "Method": "AddNewUserRole",
+    "RelativePath": "api/UserRole",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addUserRoleDto",
+        "Type": "UserRoleApi.Models.Dtos.AddUserRoleDto",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]

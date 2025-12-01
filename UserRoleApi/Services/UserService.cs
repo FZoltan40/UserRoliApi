@@ -76,6 +76,34 @@ namespace UserRoleApi.Services
             }
         }
 
+        public async Task<object> GetAllUserWithRole()
+        {
+            try
+            {
+
+                var result = new ResultResponseDto();
+                result.message = "Sikeres lekérdezés";
+                result.result = await _context.Users
+                    .Include(x => x.UserRoles)
+                    .ThenInclude(x => x.Role)
+                    .Select(x => new
+                    {
+                        UserName = x.Name,
+                        UserRole = x.UserRoles
+                    .Select(y => y.Role.Name)
+                    })
+                    .ToListAsync();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                var result = new ResultResponseDto();
+                result.message = ex.Message;
+                result.result = null;
+                return result;
+            }
+        }
+
         public Task<object> GetUserById(Guid id)
         {
             throw new NotImplementedException();
