@@ -1,4 +1,5 @@
-﻿using UserRoleApi.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using UserRoleApi.Models;
 using UserRoleApi.Models.Dtos;
 using UserRoleApi.Services.IServices;
 
@@ -47,9 +48,42 @@ namespace UserRoleApi.Services
                 var result = new ResultResponseDto();
                 result.message = ex.Message;
                 result.result = null;
-
                 return result;
             }
+        }
+
+        public async Task<object> DeleteUser(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<object> GetAllUser()
+        {
+            try
+            {
+
+                var result = new ResultResponseDto();
+                result.message = "Sikeres lekérdezés";
+                result.result = await _context.Users.ToListAsync();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                var result = new ResultResponseDto();
+                result.message = ex.Message;
+                result.result = null;
+                return result;
+            }
+        }
+
+        public Task<object> GetUserById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<object> UpdateUser(Guid id, UpdateUserDto updateUserDto)
+        {
+            throw new NotImplementedException();
         }
     }
 }
